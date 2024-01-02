@@ -1806,7 +1806,7 @@ if __name__ == '__main__':
         jsonFolder.mkdir(exist_ok=True)
 
     if args.stats:
-        statFile = open(hmiTextFolder / Path(hmiFile.stem + "_Stats" + hmiTextFileExt), "w")
+        statFile = open(hmiTextFolder / Path(hmiFile.stem + "_Stats" + hmiTextFileExt), "w", encoding="utf-8")
 
     texts = dict()
     codeLines = dict()
@@ -1815,7 +1815,7 @@ if __name__ == '__main__':
     compCount = dict()
     compCount["Program.s"] = 0
     if args.json:
-        with open(jsonFolder / Path("Program.s" + ".json"), "w") as f:
+        with open(jsonFolder / Path("Program.s" + ".json"), "w", encoding="utf-8") as f:
             json.dump({"Program.s": hmi.programS}, f, indent=4)
     for page in hmi.pages:
         name = page.components[0].rawData["att"]["objname"]#str(page)
@@ -1828,12 +1828,12 @@ if __name__ == '__main__':
         for c in page.components:
             codeLines[name].extend(getCodeLines(c.rawData))
         if args.json:
-            with open(jsonFolder / Path(name + ".json"), "w") as f:
+            with open(jsonFolder / Path(name + ".json"), "w", encoding="utf-8") as f:
                 json.dump(dict([(str(c), c.data) for c in page.components]), f, indent=4)
     totalCodeLines = 0
     tusloc = set()
     for name, text in texts.items():
-        with open(hmiTextFolder / Path(name + hmiTextFileExt), "w") as f:
+        with open(hmiTextFolder / Path(name + hmiTextFileExt), "w", encoding="utf-8") as f:
             pageCodeLines = codeLines[name]
             sloc = len(pageCodeLines)
             usloc = set(pageCodeLines)
