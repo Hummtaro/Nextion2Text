@@ -100,7 +100,8 @@ class Component:
                 65:  "File Browser",
                 109: "Hotspot",
                 51:  "Timer",
-		5:   "TouchCap",
+                5:   "TouchCap",
+                70:  "ColPic",
                 -1: "Unknown",
             },
             "type": {
@@ -1607,6 +1608,7 @@ class HMI:
         0xda27baa7: {"short":  "NX8048P070_011", "long": "Nextion 7.0\" Intelligent 800x480",},
         0xc43473c2: {"short":  "NX1060P070_011", "long": "Nextion 7.0\" Intelligent 1024x600",},
         0x4fc44fa0: {"short":  "NX1060P101_011", "long": "Nextion 10.0\" Intelligent 1024x600",},
+        0x38a388a8: {"short": "TJC4827X243_011", "long": "TJC 4.3\" X2-Series 480x270",},
     }
 
     def __init__(self, HMIFilePath):
